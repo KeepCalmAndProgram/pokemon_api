@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_api/repositories/models/pokemon_api.dart';
 
 class ListTileWidget extends StatelessWidget {
   const ListTileWidget({
       Key? key,
-      required this.pokemonName
+      required this.pokemon,
   }) : super(key: key);
 
-  final String pokemonName;
+  final PokemonApi pokemon;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -15,18 +17,18 @@ class ListTileWidget extends StatelessWidget {
         size: 25,
       ),
       title: Text(
-        pokemonName,
+        pokemon.name,
         style: theme.textTheme.bodyMedium,
       ),
       subtitle: Text(
-        "123141",
+        '${pokemon.weight} \$',
         style: theme.textTheme.labelSmall,
       ),
       trailing: const Icon(Icons.arrow_forward_ios),
       onTap: (){
         Navigator.of(context).pushNamed(
           '/pokemon',
-          arguments: pokemonName,
+          arguments: pokemon,
         );
       },
     );
