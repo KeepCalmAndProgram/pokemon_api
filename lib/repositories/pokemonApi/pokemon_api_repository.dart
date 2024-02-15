@@ -1,18 +1,32 @@
 import 'package:dio/dio.dart';
-import '../models/pokemon_api.dart';
+import 'package:pokemon_api/repositories/models/pokemon_api.dart';
 
 class PokemonApiRepository {
-  Future<List<PokemonApi>> getPockemonApiList() async {
+  Future<List<PokemonApi>> fetchPokemonList() async {
     final response = await Dio().get('https://pokeapi.co/api/v2/pokemon');
 
+    final List<Future> futures = [];
+
     final data = response.data as Map<String, dynamic>;
-    final pokemonList = data.entries
-        .map((e) => PokemonApi(
-              name: (e.value as Map<String, dynamic>)['name'],
-              weight: (e.value as Map<String, dynamic>)['url'],
-              imageUrl: (e.value as Map<String, dynamic>)['url'],
-            ))
+
+    final pokemonList = data['results']
+        .map((e) => (e as Map<String, dynamic>)['name'] as String?)
         .toList();
-    return pokemonList;
+
+    for (final pokemon in pokemonList) {
+      if (pokemon == null) {
+        continue;
+      }
+
+      futures.add(Dio().get('https://pokeapi.co/api/v2/pokemon/$pokemon'));
+    }
+
+    final responses = await Future.wait(futures);
+    final result = responses.map((e) {
+      final data = e.data as Map<String, dynamic>;
+      return PokemonApi.fromJson(data);
+    }).toList();
+
+    return result;
   }
 }

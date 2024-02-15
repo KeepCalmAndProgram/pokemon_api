@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_api/repositories/models/pokemon_api.dart';
 
 class PokemonScreen extends StatefulWidget {
   const PokemonScreen({Key? key}) : super(key: key);
@@ -8,21 +9,22 @@ class PokemonScreen extends StatefulWidget {
 }
 
 class _PokemonScreenState extends State<PokemonScreen> {
-  String? pokemonName;
+  PokemonApi? pokemon;
 
   @override
   void didChangeDependencies() {
     final arguments = ModalRoute.of(context)?.settings.arguments;
-    assert(arguments != null && arguments is String, 'Error must be String');
-    pokemonName = arguments as String;
-    setState(() { });
+    if (arguments is PokemonApi) {
+      pokemon = arguments;
+    }
+
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(pokemonName ?? '...')),
+      appBar: AppBar(title: Text(pokemon?.name ?? '...')),
     );
   }
 }
