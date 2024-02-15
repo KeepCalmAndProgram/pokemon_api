@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_api/features/widgets/list_tile_widget.dart';
-import 'package:pokemon_api/repositories/models/pokemon_api.dart';
-import 'package:pokemon_api/repositories/pokemonApi/pokemon_api_repository.dart';
+import 'package:pokemon_api/repositories/models/pockemon_api.dart';
+import 'package:pokemon_api/repositories/pokemonApi/pockemon_api_repository.dart';
 
-class PokemonListScreen extends StatefulWidget {
-  const PokemonListScreen({Key? key}) : super(key: key);
+class PockemonListScreen extends StatefulWidget {
+  const PockemonListScreen({Key? key}) : super(key: key);
 
   @override
-  State<PokemonListScreen> createState() => _PokemonListScreenState();
+  State<PockemonListScreen> createState() => _PockemonListScreenState();
 }
 
-class _PokemonListScreenState extends State<PokemonListScreen> {
-  late final Future<List<PokemonApi>> _pokemonListFuture;
+class _PockemonListScreenState extends State<PockemonListScreen> {
+  late final Future<List<PockemonApi>> _pockemonListFuture;
 
   @override
   void initState() {
     super.initState();
-    _pokemonListFuture = PokemonApiRepository().fetchPokemonList();
+    _pockemonListFuture = PockemonApiRepository().fetchPockemonList();
   }
 
   @override
@@ -27,7 +27,7 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
         title: const Text("Pokemon Api"),
       ),
       body: FutureBuilder(
-          future: _pokemonListFuture,
+          future: _pockemonListFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
@@ -42,12 +42,12 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
               );
             }
 
-            final pokemonList = snapshot.data as List<PokemonApi>;
+            final pockemonList = snapshot.data as List<PockemonApi>;
             return ListView.builder(
-              itemCount: pokemonList.length,
+              itemCount: pockemonList.length,
               itemBuilder: (context, index) {
-                final pokemon = pokemonList[index];
-                return ListTileWidget(pokemon: pokemon);
+                final pockemon = pockemonList[index];
+                return ListTileWidget(pockemon: pockemon);
               },
             );
           }),

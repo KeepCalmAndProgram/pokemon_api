@@ -3,12 +3,12 @@ import 'package:pokemon_api/router/router.dart';
 import 'package:pokemon_api/theme/greyTheme.dart';
 
 
-class PokemonListApp extends StatelessWidget {
-  const PokemonListApp({super.key});
+class PockemonListApp extends StatelessWidget {
+  const PockemonListApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Pokemon Api",
+      title: "Pockemon Api",
       theme: grayTheme,
       routes: routes,
     );
