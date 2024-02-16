@@ -9,12 +9,12 @@ class PockemonScreen extends StatefulWidget {
 }
 
 class _PockemonScreenState extends State<PockemonScreen> {
-  PockemonApi? pockemon;
+  PockemonAPi? pockemon;
 
   @override
   void didChangeDependencies() {
     final arguments = ModalRoute.of(context)?.settings.arguments;
-    if (arguments is PockemonApi) {
+    if (arguments is PockemonAPi) {
       pockemon = arguments;
     }
     super.didChangeDependencies();

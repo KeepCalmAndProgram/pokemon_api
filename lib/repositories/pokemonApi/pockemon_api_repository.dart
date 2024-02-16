@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:pokemon_api/repositories/models/pockemon_api.dart';
 
 class PockemonApiRepository {
-  Future<List<PockemonApi>> fetchPockemonList() async {
+  Future<List<PockemonAPi>> fetchPockemonList() async {
     final response = await Dio().get('https://pokeapi.co/api/v2/pokemon');
 
     final List<Future> futuresPockemon = [];
@@ -20,13 +20,11 @@ class PockemonApiRepository {
       futuresPockemon.add(Dio().get('https://pokeapi.co/api/v2/pokemon/$pockemon'));
     }
 
-    final responses = await Future.wait(futuresPockemon);
-    final result = responses.map((e) {
-      final data = e.data as Map<String, dynamic>;
-      return PockemonApi.fromJson(data);
-    }).toList();
-
-
+      final responses = await Future.wait(futuresPockemon);
+      final result = responses.map((e) {
+          final data = e.data as Map<String, dynamic>;
+          return PockemonAPi.fromJson(data);
+      }).toList();
     return result;
   }
 }

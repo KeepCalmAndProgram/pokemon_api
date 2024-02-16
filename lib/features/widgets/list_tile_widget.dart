@@ -7,30 +7,44 @@ class ListTileWidget extends StatelessWidget {
       required this.pockemon,
   }) : super(key: key);
 
-  final PockemonApi pockemon;
+  final PockemonAPi pockemon;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return ListTile(
-      leading: const FlutterLogo(
-        size: 25,
-      ),
-      title: Text(
-        pockemon.name,
-        style: theme.textTheme.bodyMedium,
-      ),
-      //subtitle: Text(
-       // '${pockemon.weight} \$',
-       // style: theme.textTheme.labelSmall,
-     // ),
-      trailing: const Icon(Icons.arrow_forward_ios),
-      onTap: (){
-        Navigator.of(context).pushNamed(
-          '/pockemon',
-          arguments: pockemon,
+
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(25, 10, 25, 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Stack(
+                children: [
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                            '/pockemon',
+                            arguments: pockemon,
+                          );
+                        },
+                        child: Container(
+                          height: MediaQuery.of(context).size.height / 8,
+                          width: MediaQuery.of(context).size.width / 4.3,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            color: Colors.lightBlueAccent,
+                          ),
+                          child: Image.network(
+                              'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+              ],
+            ),
+          ),
         );
-      },
-    );
   }
 }
