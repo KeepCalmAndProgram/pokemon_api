@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_api/features/widgets/pockemon_view_widget.dart';
 import 'package:pokemon_api/repositories/models/pockemon_api.dart';
 import 'package:pokemon_api/repositories/pokemonApi/pockemon_api_repository.dart';
 
-import '../widgets/pockemon_view_widget.dart';
 
 class PockemonListScreen extends StatefulWidget {
   const PockemonListScreen({Key? key}) : super(key: key);
@@ -12,12 +12,10 @@ class PockemonListScreen extends StatefulWidget {
 }
 
 class _PockemonListScreenState extends State<PockemonListScreen> {
+
   late final Future<List<PockemonAPi>> _pockemonListFuture;
 
-  late double _width;
-  late double _height;
-
-    @override
+  @override
   void initState() {
     super.initState();
     _pockemonListFuture = PockemonApiRepository().fetchPockemonList();
@@ -26,56 +24,48 @@ class _PockemonListScreenState extends State<PockemonListScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    _width = MediaQuery.of(context).size.width / 4.3;
-    _height = MediaQuery.of(context).size.height / 8;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Pokemon Api"),
       ),
       body: FutureBuilder(
-          future: _pockemonListFuture,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            }
+        future: _pockemonListFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-            if (snapshot.hasError) {
-              return Center(
-                child: Text(
-                  'Error: ${snapshot.error}',
-                  style: theme.textTheme.bodyMedium,
-                ),
-              );
-            }
-
-            final pockemonList = snapshot.data as List<PockemonAPi>;
-
-            return SizedBox(
-              height: MediaQuery.of(context).size.height / 1.5,
-              width: MediaQuery.of(context).size.width,
-              child: ListView.builder(
-                itemCount: pockemonList.length,
-                itemBuilder: (context, index) {
-                  final pockemon = pockemonList[index];
-                  return Wrap(
-                      spacing: 5.0,
-                      runSpacing: 5.0,
-                      children: [
-                          PockemonView(width: _width, height: _height, pockemon: pockemon),
-                      ],
-                  );
-                },
-            ),
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                'Error: ${snapshot.error}',
+                style: theme.textTheme.bodyMedium,
+              ),
             );
-            /*ListView.builder(
-              itemCount: pockemonList.length,
-              itemBuilder: (context, index) {
-                final pockemon = pockemonList[index];
-                return PockemonView(width: 20, height: 20, pockemon: pockemon);
-                //return ListTileWidget(pockemon: pockemon);
-              },
-            );*/
-          }),
+          }
+
+          final pokemonList = snapshot.data as List<PockemonAPi>;
+
+          return GridView.builder(
+            itemCount: pokemonList.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: 1,
+              crossAxisCount: 2,
+            ),
+            itemBuilder: (context, index) {
+              final pockemon = pokemonList[index];
+              return Container(
+                padding: EdgeInsets.all(20.0),
+                child: PockemonView(
+                    width: double.infinity,
+                    height: double.infinity,
+                    pockemon: pockemon),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

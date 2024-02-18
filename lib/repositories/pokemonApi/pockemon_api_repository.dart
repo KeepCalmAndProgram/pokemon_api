@@ -17,14 +17,15 @@ class PockemonApiRepository {
       if (pockemon == null) {
         continue;
       }
-      futuresPockemon.add(Dio().get('https://pokeapi.co/api/v2/pokemon/$pockemon'));
+      futuresPockemon
+          .add(Dio().get('https://pokeapi.co/api/v2/pokemon/$pockemon'));
     }
 
-      final responses = await Future.wait(futuresPockemon);
-      final result = responses.map((e) {
-          final data = e.data as Map<String, dynamic>;
-          return PockemonAPi.fromJson(data);
-      }).toList();
+    final responses = await Future.wait(futuresPockemon);
+    final result = responses.map((e) {
+      final data = e.data as Map<String, dynamic>;
+      return PockemonAPi.fromJson(data);
+    }).toList();
     return result;
   }
 }

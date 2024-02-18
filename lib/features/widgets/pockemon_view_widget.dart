@@ -15,29 +15,37 @@ class PockemonView extends StatelessWidget {
   final PockemonAPi pockemon;
 
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed(
-              '/pockemon',
-              arguments: pockemon,
-            );
-          },
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
-              color: Colors.lightBlueAccent,
-            ),
-            child: Image.network(
-              'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
-              fit: BoxFit.cover,
-            ),
-          ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          '/pockemon',
+          arguments: pockemon,
+        );
+      },
+      child: Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25.0),
+          color: Colors.amber,
         ),
-      ],
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+
+            Positioned.fill(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.network(
+                  pockemon.sprites.frontDefault,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Positioned(bottom: 10, child: Text(pockemon.name)),
+          ],
+        ),
+      ),
     );
   }
 }

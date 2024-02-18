@@ -1,4 +1,3 @@
-
 class AbilityAbility {
   final String name;
   final String url;
@@ -9,12 +8,12 @@ class AbilityAbility {
   });
 
   factory AbilityAbility.fromJson(Map<String, dynamic> json) => AbilityAbility(
-    name: json["name"],
-    url: json["url"],
-  );
+        name: json["name"],
+        url: json["url"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "name": name,
-    "url": url,
-  };
+        "name": name,
+        "url": url,
+      };
 }

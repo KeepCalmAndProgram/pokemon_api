@@ -9,7 +9,6 @@ part 'pockemon_api.g.dart';
 
 @JsonSerializable()
 class PockemonAPi {
-
   const PockemonAPi({
     required this.abilities,
     required this.baseExperience,
@@ -18,7 +17,7 @@ class PockemonAPi {
     required this.weight,
     required this.locationAreaEncounters,
     required this.name,
-    //required this.sprites,
+    required this.sprites,
   });
 
   final List<AbilityElement> abilities;
@@ -28,11 +27,8 @@ class PockemonAPi {
   final int weight;
   final String locationAreaEncounters;
   final String name;
-  //final Sprites sprites;
+  final Sprites sprites;
 
-
-  factory PockemonAPi.fromJson(Map<String, dynamic> json) => _$PockemonApiFromJson(json);
+  factory PockemonAPi.fromJson(Map<String, dynamic> json) =>
+      _$PockemonApiFromJson(json);
 }
-
-
-

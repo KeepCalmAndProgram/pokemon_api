@@ -1,25 +1,27 @@
-import 'other.dart';
-
 class Sprites {
   final String frontDefault;
+  final String backDefault;
   final String frontShiny;
-  final Other other;
+  final String backShiny;
 
   Sprites({
     required this.frontDefault,
+    required this.backDefault,
     required this.frontShiny,
-    required this.other,
+    required this.backShiny,
   });
 
   factory Sprites.fromJson(Map<String, dynamic> json) => Sprites(
-    frontDefault: json["front_default"],
-    frontShiny: json["front_shiny"],
-    other: Other.fromJson(json["other"]),
-  );
+        frontDefault: json["front_default"],
+        backDefault: json["back_default"],
+        frontShiny: json["front_shiny"],
+        backShiny: json["back_shiny"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "front_default": frontDefault,
-    "front_shiny": frontShiny,
-    "other": other.toJson(),
-  };
+        "front_default": frontDefault,
+        "back_default": backShiny,
+        "front_shiny": frontShiny,
+        "back_shiny": backShiny,
+      };
 }

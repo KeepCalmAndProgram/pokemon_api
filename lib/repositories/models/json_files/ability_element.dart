@@ -12,14 +12,14 @@ class AbilityElement {
   });
 
   factory AbilityElement.fromJson(Map<String, dynamic> json) => AbilityElement(
-    ability: AbilityAbility.fromJson(json["ability"]),
-    isHidden: json["is_hidden"],
-    slot: json["slot"],
-  );
+        ability: AbilityAbility.fromJson(json["ability"]),
+        isHidden: json["is_hidden"],
+        slot: json["slot"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "ability": ability.toJson(),
-    "is_hidden": isHidden,
-    "slot": slot,
-  };
+        "ability": ability.toJson(),
+        "is_hidden": isHidden,
+        "slot": slot,
+      };
 }
