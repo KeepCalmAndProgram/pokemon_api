@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../repositories/models/pockemon_api.dart';
-
 class PockemonSkill extends StatelessWidget {
-
   const PockemonSkill({
     Key? key,
     required this.skill,
@@ -16,15 +13,20 @@ class PockemonSkill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ElevatedButton(
-              onPressed: () {},
-              child: Text(letter),
+            onPressed: () {},
+            child: Text(letter),
           ),
-          Text('$skill'),
+          Text(
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              '$skill'),
         ],
       ),
     );

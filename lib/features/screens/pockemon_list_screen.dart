@@ -3,7 +3,6 @@ import 'package:pokemon_api/features/widgets/pockemon_view_widget.dart';
 import 'package:pokemon_api/repositories/models/pockemon_api.dart';
 import 'package:pokemon_api/repositories/pokemonApi/pockemon_api_repository.dart';
 
-
 class PockemonListScreen extends StatefulWidget {
   const PockemonListScreen({Key? key}) : super(key: key);
 
@@ -12,7 +11,6 @@ class PockemonListScreen extends StatefulWidget {
 }
 
 class _PockemonListScreenState extends State<PockemonListScreen> {
-
   late final Future<List<PockemonAPi>> _pockemonListFuture;
 
   @override

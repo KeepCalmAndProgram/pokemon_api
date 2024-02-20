@@ -1,13 +1,13 @@
-class AbilityAbility {
+class StatStat {
   final String name;
   final String url;
 
-  AbilityAbility({
+  StatStat({
     required this.name,
     required this.url,
   });
 
-  factory AbilityAbility.fromJson(Map<String, dynamic> json) => AbilityAbility(
+  factory StatStat.fromJson(Map<String, dynamic> json) => StatStat(
         name: json["name"],
         url: json["url"],
       );

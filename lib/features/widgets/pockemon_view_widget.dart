@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../repositories/models/pockemon_api.dart';
+import 'package:pokemon_api/repositories/models/pockemon_api.dart';
 
 class PockemonView extends StatelessWidget {
   const PockemonView({
@@ -32,7 +31,15 @@ class PockemonView extends StatelessWidget {
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
-
+            Positioned.fill(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.network(
+                  pockemon.stats[0].stat.name,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
             Positioned.fill(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

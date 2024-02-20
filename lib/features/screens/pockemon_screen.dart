@@ -1,10 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:pokemon_api/features/widgets/pockemon_skill.dart';
 import 'package:pokemon_api/repositories/models/pockemon_api.dart';
-
-import '../widgets/pockemon_view_widget.dart';
+import 'package:pokemon_api/features/widgets/pockemon_view_widget.dart';
 
 class PockemonScreen extends StatefulWidget {
   const PockemonScreen({Key? key}) : super(key: key);
@@ -33,7 +30,6 @@ class _PockemonScreenState extends State<PockemonScreen> {
         color: Colors.white,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -56,18 +52,18 @@ class _PockemonScreenState extends State<PockemonScreen> {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(0, 25, 25, 25),
                     child: Container(
-                      color: Colors.blue,
+                      color: Colors.white24,
                       width: MediaQuery.of(context).size.width / 3,
                       height: MediaQuery.of(context).size.height / 3.1,
                       child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             PockemonSkill(
-                                skill: pockemon!.name, letter: 'N'),
+                                skill: pockemon!.name, letter: 'Name'),
                             PockemonSkill(
-                                skill: pockemon!.weight, letter: 'W'),
+                                skill: pockemon!.weight, letter: 'Weight'),
                             PockemonSkill(
-                                skill: pockemon!.height, letter: 'H'),
+                                skill: pockemon!.height, letter: 'Height'),
                           ]),
                     ),
                   ),
@@ -81,6 +77,31 @@ class _PockemonScreenState extends State<PockemonScreen> {
                   color: Colors.amberAccent,
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height / 3.1,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(30.0, 0, 30.0, 0),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          PockemonSkill(
+                              skill: pockemon!.stats[0].baseStat,
+                              letter: pockemon!.stats[0].stat.name),
+                          PockemonSkill(
+                              skill: pockemon!.stats[1].baseStat,
+                              letter: pockemon!.stats[1].stat.name),
+                          PockemonSkill(
+                              skill: pockemon!.stats[2].baseStat,
+                              letter: pockemon!.stats[2].stat.name),
+                          PockemonSkill(
+                              skill: pockemon!.stats[2].baseStat,
+                              letter: pockemon!.stats[3].stat.name),
+                          PockemonSkill(
+                              skill: pockemon!.stats[3].baseStat,
+                              letter: pockemon!.stats[4].stat.name),
+                          PockemonSkill(
+                              skill: pockemon!.stats[4].baseStat,
+                              letter: pockemon!.stats[5].stat.name),
+                        ]),
+                  ),
                 ),
               ),
             ),
