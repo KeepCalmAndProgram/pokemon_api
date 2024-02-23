@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_api/repositories/models/pockemon_api.dart';
+import 'package:pokemon_api/repositories/models/pokemon_api.dart';
 
-class PockemonView extends StatelessWidget {
-  const PockemonView({
+class PokemonView extends StatelessWidget {
+  const PokemonView({
     Key? key,
     required this.width,
     required this.height,
-    required this.pockemon,
+    required this.pokemon,
   }) : super(key: key);
 
   final double width;
   final double height;
-  final PockemonAPi pockemon;
+  final PokemonAPi pokemon;
 
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(
-          '/pockemon',
-          arguments: pockemon,
+          '/pokemon',
+          arguments: pokemon,
         );
       },
       child: Container(
@@ -35,7 +35,7 @@ class PockemonView extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.network(
-                  pockemon.stats[0].stat.name,
+                  pokemon.stats[0].stat.name,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -44,12 +44,12 @@ class PockemonView extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.network(
-                  pockemon.sprites.frontDefault,
+                  pokemon.sprites.frontDefault,
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-            Positioned(bottom: 10, child: Text(pockemon.name)),
+            Positioned(bottom: 10, child: Text(pokemon.name)),
           ],
         ),
       ),

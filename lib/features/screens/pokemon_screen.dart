@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_api/features/widgets/pockemon_skill.dart';
-import 'package:pokemon_api/repositories/models/pockemon_api.dart';
-import 'package:pokemon_api/features/widgets/pockemon_view_widget.dart';
+import 'package:pokemon_api/features/widgets/pokemon_skill.dart';
+import 'package:pokemon_api/repositories/models/pokemon_api.dart';
+import 'package:pokemon_api/features/widgets/pokemon_view_widget.dart';
 
-class PockemonScreen extends StatefulWidget {
-  const PockemonScreen({Key? key}) : super(key: key);
+class PokemonScreen extends StatefulWidget {
+  const PokemonScreen({Key? key}) : super(key: key);
 
   @override
-  State<PockemonScreen> createState() => _PockemonScreenState();
+  State<PokemonScreen> createState() => _PokemonScreenState();
 }
 
-class _PockemonScreenState extends State<PockemonScreen> {
-  PockemonAPi? pockemon;
+class _PokemonScreenState extends State<PokemonScreen> {
+  PokemonAPi? pokemon;
 
   @override
   void didChangeDependencies() {
     final arguments = ModalRoute.of(context)?.settings.arguments;
-    if (arguments is PockemonAPi) {
-      pockemon = arguments;
+    if (arguments is PokemonAPi) {
+      pokemon = arguments;
     }
     super.didChangeDependencies();
   }
@@ -25,7 +25,7 @@ class _PockemonScreenState extends State<PockemonScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(pockemon?.name ?? '...')),
+      appBar: AppBar(title: Text(pokemon?.name ?? '...')),
       body: Container(
         color: Colors.white,
         child: Column(
@@ -40,10 +40,10 @@ class _PockemonScreenState extends State<PockemonScreen> {
                     child: Container(
                       width: MediaQuery.of(context).size.width / 3,
                       height: MediaQuery.of(context).size.height / 3.1,
-                      child: PockemonView(
+                      child: PokemonView(
                         width: double.infinity,
                         height: double.infinity,
-                        pockemon: pockemon!,
+                        pokemon: pokemon!,
                       ),
                     ),
                   ),
@@ -58,12 +58,12 @@ class _PockemonScreenState extends State<PockemonScreen> {
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            PockemonSkill(
-                                skill: pockemon!.name, letter: 'Name'),
-                            PockemonSkill(
-                                skill: pockemon!.weight, letter: 'Weight'),
-                            PockemonSkill(
-                                skill: pockemon!.height, letter: 'Height'),
+                            PokemonSkill(
+                                skill: pokemon!.name, letter: 'Name'),
+                            PokemonSkill(
+                                skill: pokemon!.weight, letter: 'Weight'),
+                            PokemonSkill(
+                                skill: pokemon!.height, letter: 'Height'),
                           ]),
                     ),
                   ),
@@ -82,24 +82,24 @@ class _PockemonScreenState extends State<PockemonScreen> {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          PockemonSkill(
-                              skill: pockemon!.stats[0].baseStat,
-                              letter: pockemon!.stats[0].stat.name),
-                          PockemonSkill(
-                              skill: pockemon!.stats[1].baseStat,
-                              letter: pockemon!.stats[1].stat.name),
-                          PockemonSkill(
-                              skill: pockemon!.stats[2].baseStat,
-                              letter: pockemon!.stats[2].stat.name),
-                          PockemonSkill(
-                              skill: pockemon!.stats[2].baseStat,
-                              letter: pockemon!.stats[3].stat.name),
-                          PockemonSkill(
-                              skill: pockemon!.stats[3].baseStat,
-                              letter: pockemon!.stats[4].stat.name),
-                          PockemonSkill(
-                              skill: pockemon!.stats[4].baseStat,
-                              letter: pockemon!.stats[5].stat.name),
+                          PokemonSkill(
+                              skill: pokemon!.stats[0].baseStat,
+                              letter: pokemon!.stats[0].stat.name),
+                          PokemonSkill(
+                              skill: pokemon!.stats[1].baseStat,
+                              letter: pokemon!.stats[1].stat.name),
+                          PokemonSkill(
+                              skill: pokemon!.stats[2].baseStat,
+                              letter: pokemon!.stats[2].stat.name),
+                          PokemonSkill(
+                              skill: pokemon!.stats[2].baseStat,
+                              letter: pokemon!.stats[3].stat.name),
+                          PokemonSkill(
+                              skill: pokemon!.stats[3].baseStat,
+                              letter: pokemon!.stats[4].stat.name),
+                          PokemonSkill(
+                              skill: pokemon!.stats[4].baseStat,
+                              letter: pokemon!.stats[5].stat.name),
                         ]),
                   ),
                 ),

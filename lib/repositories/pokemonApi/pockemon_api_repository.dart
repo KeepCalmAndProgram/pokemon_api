@@ -1,30 +1,36 @@
 import 'package:dio/dio.dart';
-import 'package:pokemon_api/repositories/models/pockemon_api.dart';
+import 'package:pokemon_api/repositories/interface_pokemon_repository.dart';
+import 'package:pokemon_api/repositories/models/pokemon_api.dart';
 
-class PockemonApiRepository {
-  Future<List<PockemonAPi>> fetchPockemonList() async {
-    final response = await Dio().get('https://pokeapi.co/api/v2/pokemon');
+class PokemonApiRepository implements InterfacePokemonRepository {
+  PokemonApiRepository({required this.dio});
 
-    final List<Future> futuresPockemon = [];
+  late final Dio dio;
+
+  @override
+  Future<List<PokemonAPi>> fetchPokemonList() async {
+    final response = await dio.get('https://pokeapi.co/api/v2/pokemon');
+
+    final List<Future> futuresPokemon = [];
 
     final data = response.data as Map<String, dynamic>;
 
-    final pockemonList = data['results']
+    final pokemonList = data['results']
         .map((e) => (e as Map<String, dynamic>)['name'] as String?)
         .toList();
 
-    for (final pockemon in pockemonList) {
-      if (pockemon == null) {
+    for (final pokemon in pokemonList) {
+      if (pokemon == null) {
         continue;
       }
-      futuresPockemon
-          .add(Dio().get('https://pokeapi.co/api/v2/pokemon/$pockemon'));
+      futuresPokemon
+          .add(Dio().get('https://pokeapi.co/api/v2/pokemon/$pokemon'));
     }
 
-    final responses = await Future.wait(futuresPockemon);
+    final responses = await Future.wait(futuresPokemon);
     final result = responses.map((e) {
       final data = e.data as Map<String, dynamic>;
-      return PockemonAPi.fromJson(data);
+      return PokemonAPi.fromJSon(data);
     }).toList();
     return result;
   }

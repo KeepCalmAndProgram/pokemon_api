@@ -1,13 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
-
 import 'json_files/stat_element.dart';
 import 'json_files/sprites.dart';
 
-part 'pockemon_api.g.dart';
+part 'pokemon_api.g.dart';
 
 @JsonSerializable()
-class PockemonAPi {
-  const PockemonAPi({
+class PokemonAPi {
+  const PokemonAPi({
     required this.stats,
     required this.height,
     required this.id,
@@ -23,6 +22,6 @@ class PockemonAPi {
   final String name;
   final Sprites sprites;
 
-  factory PockemonAPi.fromJson(Map<String, dynamic> json) =>
-      _$PockemonAPiFromJson(json);
+  factory PokemonAPi.fromJson(Map<String, dynamic> json) =>
+      _$PokemonAPiFromJson(json);
 }

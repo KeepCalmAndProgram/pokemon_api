@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PockemonSkill extends StatelessWidget {
-  const PockemonSkill({
+class PokemonSkill extends StatelessWidget {
+  const PokemonSkill({
     Key? key,
     required this.skill,
     required this.letter,

@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^5.4.0
   json_annotation: ^4.8.1
+  get_it: ^7.6.7
+  flutter_bloc: ^8.1.4
+  freezed: ^2.4.7
 
 dev_dependencies:
   flutter_test:
