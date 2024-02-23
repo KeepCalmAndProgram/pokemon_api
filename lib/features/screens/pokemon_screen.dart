@@ -56,15 +56,22 @@ class _PokemonScreenState extends State<PokemonScreen> {
                       width: MediaQuery.of(context).size.width / 3,
                       height: MediaQuery.of(context).size.height / 3.1,
                       child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            PokemonSkill(
-                                skill: pokemon!.name, letter: 'Name'),
-                            PokemonSkill(
-                                skill: pokemon!.weight, letter: 'Weight'),
-                            PokemonSkill(
-                                skill: pokemon!.height, letter: 'Height'),
-                          ]),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          PokemonSkill(
+                            skill: pokemon!.name,
+                            name: 'Name',
+                          ),
+                          PokemonSkill(
+                            skill: pokemon!.weight,
+                            name: 'Weight',
+                          ),
+                          PokemonSkill(
+                            skill: pokemon!.height,
+                            name: 'Height',
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -80,27 +87,34 @@ class _PokemonScreenState extends State<PokemonScreen> {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(30.0, 0, 30.0, 0),
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          PokemonSkill(
-                              skill: pokemon!.stats[0].baseStat,
-                              letter: pokemon!.stats[0].stat.name),
-                          PokemonSkill(
-                              skill: pokemon!.stats[1].baseStat,
-                              letter: pokemon!.stats[1].stat.name),
-                          PokemonSkill(
-                              skill: pokemon!.stats[2].baseStat,
-                              letter: pokemon!.stats[2].stat.name),
-                          PokemonSkill(
-                              skill: pokemon!.stats[2].baseStat,
-                              letter: pokemon!.stats[3].stat.name),
-                          PokemonSkill(
-                              skill: pokemon!.stats[3].baseStat,
-                              letter: pokemon!.stats[4].stat.name),
-                          PokemonSkill(
-                              skill: pokemon!.stats[4].baseStat,
-                              letter: pokemon!.stats[5].stat.name),
-                        ]),
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        PokemonSkill(
+                          skill: pokemon!.stats[0].baseStat,
+                          name: pokemon!.stats[0].stat.name,
+                        ),
+                        PokemonSkill(
+                          skill: pokemon!.stats[1].baseStat,
+                          name: pokemon!.stats[1].stat.name,
+                        ),
+                        PokemonSkill(
+                          skill: pokemon!.stats[2].baseStat,
+                          name: pokemon!.stats[2].stat.name,
+                        ),
+                        PokemonSkill(
+                          skill: pokemon!.stats[2].baseStat,
+                          name: pokemon!.stats[3].stat.name,
+                        ),
+                        PokemonSkill(
+                          skill: pokemon!.stats[3].baseStat,
+                          name: pokemon!.stats[4].stat.name,
+                        ),
+                        PokemonSkill(
+                          skill: pokemon!.stats[4].baseStat,
+                          name: pokemon!.stats[5].stat.name,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

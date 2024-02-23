@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_api/common/theme.dart';
 import 'package:pokemon_api/router/router.dart';
-import 'package:pokemon_api/theme/greyTheme.dart';
 
 class PockemonListApp extends StatelessWidget {
   const PockemonListApp({super.key});
@@ -9,7 +9,7 @@ class PockemonListApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Pockemon Api",
-      theme: grayTheme,
+      theme: pokemonTheme,
       routes: routes,
     );
   }

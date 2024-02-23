@@ -13,3 +13,11 @@ class PokemonLoaded extends PokemonState {
 
   final List<PokemonAPi> pokemonList;
 }
+
+class PokemonLoadingFailure extends PokemonState {
+  PokemonLoadingFailure({
+    required this.exeption,
+  });
+
+  final Object? exeption;
+}

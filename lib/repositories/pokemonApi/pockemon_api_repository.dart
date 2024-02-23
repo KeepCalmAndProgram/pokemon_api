@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:pokemon_api/repositories/interface_pokemon_repository.dart';
 import 'package:pokemon_api/repositories/models/pokemon_api.dart';
 
-class PokemonApiRepository implements InterfacePokemonRepository {
+class PokemonApiRepository implements PokemonRepository {
   PokemonApiRepository({required this.dio});
 
   late final Dio dio;
@@ -30,7 +30,7 @@ class PokemonApiRepository implements InterfacePokemonRepository {
     final responses = await Future.wait(futuresPokemon);
     final result = responses.map((e) {
       final data = e.data as Map<String, dynamic>;
-      return PokemonAPi.fromJSon(data);
+      return PokemonAPi.fromJson(data);
     }).toList();
     return result;
   }

@@ -35,21 +35,15 @@ class PokemonView extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.network(
-                  pokemon.stats[0].stat.name,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Positioned.fill(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.network(
                   pokemon.sprites.frontDefault,
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-            Positioned(bottom: 10, child: Text(pokemon.name)),
+            Positioned(
+              bottom: 10,
+              child: Text(pokemon.name),
+            ),
           ],
         ),
       ),

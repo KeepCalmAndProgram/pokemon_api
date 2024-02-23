@@ -4,11 +4,11 @@ class PokemonSkill extends StatelessWidget {
   const PokemonSkill({
     Key? key,
     required this.skill,
-    required this.letter,
+    required this.name,
   }) : super(key: key);
 
   final dynamic skill;
-  final String letter;
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +17,29 @@ class PokemonSkill extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(letter),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              color: Colors.green,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(5,8,8,5),
+              child: Text(
+                '$name',
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
           Text(
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-              '$skill'),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            '$skill',
+          ),
         ],
       ),
     );

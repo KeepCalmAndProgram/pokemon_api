@@ -6,6 +6,6 @@ import 'package:pokemon_api/repositories/interface_pokemon_repository.dart';
 import 'package:pokemon_api/repositories/pokemonApi/pockemon_api_repository.dart';
 
 void main() {
-  GetIt.instance.registerLazySingleton<InterfacePokemonRepository>( () => PokemonApiRepository(dio: Dio()));
+  GetIt.instance.registerLazySingleton<PokemonRepository>( () => PokemonApiRepository(dio: Dio()));
   runApp(const PockemonListApp());
 }
