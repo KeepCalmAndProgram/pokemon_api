@@ -16,6 +16,7 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState>{
         final pokemonListFuture = await pokemonRepository.fetchPokemonList();
         emit(PokemonLoaded(pokemonList: pokemonListFuture));
       }catch (e) {
+        print(e);
         emit(PokemonLoadingFailure(exeption: e));
       }
       finally {

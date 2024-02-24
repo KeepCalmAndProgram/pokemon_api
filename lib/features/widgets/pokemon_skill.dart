@@ -23,7 +23,7 @@ class PokemonSkill extends StatelessWidget {
               color: Colors.green,
             ),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(5,8,8,5),
+              padding: const EdgeInsets.fromLTRB(8,10,10,8),
               child: Text(
                 '$name',
                 style: const TextStyle(

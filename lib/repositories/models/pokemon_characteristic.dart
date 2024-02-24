@@ -1,13 +1,13 @@
-class StatStat {
+class PokemonCharacteristic {
   final String name;
   final String url;
 
-  StatStat({
+  PokemonCharacteristic({
     required this.name,
     required this.url,
   });
 
-  factory StatStat.fromJson(Map<String, dynamic> json) => StatStat(
+  factory PokemonCharacteristic.fromJson(Map<String, dynamic> json) => PokemonCharacteristic(
         name: json["name"],
         url: json["url"],
       );

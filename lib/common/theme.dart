@@ -7,11 +7,11 @@ final pokemonTheme = ThemeData(
   colorScheme: _colorScheme,
   textTheme: const TextTheme(
     bodyText1: TextStyle(
-      color: Colors.white,
+      color: Colors.black,
       fontSize: 14,
     ),
     headline4: TextStyle(
-      color: Colors.white,
+      color: Colors.black,
       fontSize: 20,
     ),
   ),

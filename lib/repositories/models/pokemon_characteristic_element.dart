@@ -1,20 +1,20 @@
-import 'stat_stat.dart';
+import 'pokemon_characteristic.dart';
 
-class StatElement {
+class PokemonCharacteristicElement {
   final int baseStat;
   final int effort;
-  final StatStat stat;
+  final PokemonCharacteristic stat;
 
-  StatElement({
+  PokemonCharacteristicElement({
     required this.baseStat,
     required this.effort,
     required this.stat,
   });
 
-  factory StatElement.fromJson(Map<String, dynamic> json) => StatElement(
+  factory PokemonCharacteristicElement.fromJson(Map<String, dynamic> json) => PokemonCharacteristicElement(
         baseStat: json["base_stat"],
         effort: json["effort"],
-        stat: StatStat.fromJson(json["stat"]),
+        stat: PokemonCharacteristic.fromJson(json["stat"]),
       );
 
   Map<String, dynamic> toJson() => {

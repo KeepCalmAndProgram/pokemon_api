@@ -1,17 +1,17 @@
-class Sprites {
+class PokemonSprites {
   final String frontDefault;
   final String backDefault;
   final String frontShiny;
   final String backShiny;
 
-  Sprites({
+  PokemonSprites({
     required this.frontDefault,
     required this.backDefault,
     required this.frontShiny,
     required this.backShiny,
   });
 
-  factory Sprites.fromJson(Map<String, dynamic> json) => Sprites(
+  factory PokemonSprites.fromJson(Map<String, dynamic> json) => PokemonSprites(
         frontDefault: json["front_default"],
         backDefault: json["back_default"],
         frontShiny: json["front_shiny"],

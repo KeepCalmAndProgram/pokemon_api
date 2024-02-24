@@ -19,5 +19,5 @@ class PokemonLoadingFailure extends PokemonState {
     required this.exeption,
   });
 
-  final Object? exeption;
+  final dynamic exeption;
 }

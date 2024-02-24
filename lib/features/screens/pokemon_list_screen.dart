@@ -1,11 +1,14 @@
-import 'dart:async';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pokemon_api/common/theme.dart';
+import 'package:pokemon_api/features/widgets/pokemon_exeption_dialog.dart';
 import 'package:pokemon_api/features/widgets/pokemon_view_widget.dart';
 import 'package:pokemon_api/repositories/interface_pokemon_repository.dart';
 import 'package:pokemon_api/bloc/pokemon_bloc.dart';
+
+import '../widgets/pokemon_gridview.dart';
 
 class PokemonListScreen extends StatefulWidget {
   const PokemonListScreen({Key? key}) : super(key: key);
@@ -37,7 +40,7 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
             builder: (context, state) {
               if (state is PokemonLoaded) {
                 final pokemonList = state.pokemonList;
-                return GridView.builder(
+                return PokemonGridView(pokemonList: pokemonList);/*GridView.builder(
                   itemCount: pokemonList.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: 1,
@@ -54,27 +57,31 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
                       ),
                     );
                   },
-                );
+                );*/
               }
               if (state is PokemonLoadingFailure) {
-                return AlertDialog(
-                  title: Text(state.exeption?.toString() ?? 'Exception'),
-                  content: const Text(
-                    'Exception',
-                    style: TextStyle(color: Colors.black),
+                /*final exeption = state.exeption;
+                return CupertinoAlertDialog(
+                  title: Text('Exception'),
+                  content: Text(
+                    exeption.toString(),
+                    style: pokemonTheme
+                        .textTheme.bodyText1, //TextStyle(color: Colors.black),
                   ),
-                  actions: <Widget>[
-                    GestureDetector(
-                      child: const Text(
+                  actions: [
+                    CupertinoDialogAction(child: Text('OK')),
+                    CupertinoDialogAction(child: Text('NO')),
+                    /*GestureDetector(
+                      child: Text(
                         'Ok',
-                        style: TextStyle(color: Colors.black),
+                        style: pokemonTheme.textTheme.bodyText2,
                       ),
                       onTap: () {
                         Navigator.of(context).pop();
                       },
-                    ),
+                    ),*/
                   ],
-                );
+                );*/
               }
               return const Center(child: CircularProgressIndicator());
             },

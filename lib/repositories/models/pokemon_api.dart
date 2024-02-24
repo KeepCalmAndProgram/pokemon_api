@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'json_files/stat_element.dart';
-import 'json_files/sprites.dart';
+import 'pokemon_characteristic_element.dart';
+import 'pokemon_sprites.dart';
 
 part 'pokemon_api.g.dart';
 
@@ -15,12 +15,12 @@ class PokemonAPi {
     required this.sprites,
   });
 
-  final List<StatElement> stats;
+  final List<PokemonCharacteristicElement> stats;
   final int height;
   final int id;
   final int weight;
   final String name;
-  final Sprites sprites;
+  final PokemonSprites sprites;
 
   factory PokemonAPi.fromJson(Map<String, dynamic> json) =>
       _$PokemonAPiFromJson(json);

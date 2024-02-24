@@ -90,7 +90,8 @@ class _PokemonScreenState extends State<PokemonScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         PokemonSkill(
-                          skill: pokemon!.stats[0].baseStat,
+                          //skill: pokemon!.stats[0].baseStat,
+                          skill: pokemon!.stats.length,
                           name: pokemon!.stats[0].stat.name,
                         ),
                         PokemonSkill(
