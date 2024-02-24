@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokemon_api/features/widgets/pokemon_skill.dart';
 import 'package:pokemon_api/repositories/models/pokemon_api.dart';
 import 'package:pokemon_api/features/widgets/pokemon_view_widget.dart';
+import 'package:pokemon_api/features/widgets/pokemon_characteristic_widget.dart';
 
 class PokemonScreen extends StatefulWidget {
   const PokemonScreen({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class PokemonScreen extends StatefulWidget {
 }
 
 class _PokemonScreenState extends State<PokemonScreen> {
-  PokemonAPi? pokemon;
+  late PokemonAPi pokemon;
 
   @override
   void didChangeDependencies() {
@@ -25,9 +26,13 @@ class _PokemonScreenState extends State<PokemonScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(pokemon?.name ?? '...')),
+      appBar: AppBar(
+          title: Text(
+        pokemon.name ?? '...',
+        style: Theme.of(context).textTheme.bodyText2,
+      )),
       body: Container(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.onBackground,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -43,7 +48,7 @@ class _PokemonScreenState extends State<PokemonScreen> {
                       child: PokemonView(
                         width: double.infinity,
                         height: double.infinity,
-                        pokemon: pokemon!,
+                        pokemon: pokemon,
                       ),
                     ),
                   ),
@@ -59,15 +64,15 @@ class _PokemonScreenState extends State<PokemonScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           PokemonSkill(
-                            skill: pokemon!.name,
+                            skill: pokemon.name,
                             name: 'Name',
                           ),
                           PokemonSkill(
-                            skill: pokemon!.weight,
+                            skill: pokemon.weight,
                             name: 'Weight',
                           ),
                           PokemonSkill(
-                            skill: pokemon!.height,
+                            skill: pokemon.height,
                             name: 'Height',
                           ),
                         ],
@@ -81,40 +86,14 @@ class _PokemonScreenState extends State<PokemonScreen> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(25, 0, 25, 25),
                 child: Container(
-                  color: Colors.amberAccent,
+                  color: Theme.of(context).colorScheme.secondary,
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height / 3.1,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(30.0, 0, 30.0, 0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        PokemonSkill(
-                          //skill: pokemon!.stats[0].baseStat,
-                          skill: pokemon!.stats.length,
-                          name: pokemon!.stats[0].stat.name,
-                        ),
-                        PokemonSkill(
-                          skill: pokemon!.stats[1].baseStat,
-                          name: pokemon!.stats[1].stat.name,
-                        ),
-                        PokemonSkill(
-                          skill: pokemon!.stats[2].baseStat,
-                          name: pokemon!.stats[2].stat.name,
-                        ),
-                        PokemonSkill(
-                          skill: pokemon!.stats[2].baseStat,
-                          name: pokemon!.stats[3].stat.name,
-                        ),
-                        PokemonSkill(
-                          skill: pokemon!.stats[3].baseStat,
-                          name: pokemon!.stats[4].stat.name,
-                        ),
-                        PokemonSkill(
-                          skill: pokemon!.stats[4].baseStat,
-                          name: pokemon!.stats[5].stat.name,
-                        ),
-                      ],
+                    child: PokemonCharacteristicWidget(
+                      pokemon: pokemon,
+                      pokemonStats: pokemon.stats,
                     ),
                   ),
                 ),

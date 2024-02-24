@@ -20,24 +20,18 @@ class PokemonSkill extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
-              color: Colors.green,
+              color: Theme.of(context).colorScheme.primary,
             ),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(8,10,10,8),
+              padding: const EdgeInsets.fromLTRB(8, 10, 10, 8),
               child: Text(
                 '$name',
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             ),
           ),
           Text(
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+            style: Theme.of(context).textTheme.bodyText2,
             '$skill',
           ),
         ],

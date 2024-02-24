@@ -11,7 +11,7 @@ final pokemonTheme = ThemeData(
       fontSize: 14,
     ),
     headline4: TextStyle(
-      color: Colors.black,
+      color: Colors.white,
       fontSize: 20,
     ),
   ),

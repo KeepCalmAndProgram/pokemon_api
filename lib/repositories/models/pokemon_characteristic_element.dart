@@ -11,7 +11,8 @@ class PokemonCharacteristicElement {
     required this.stat,
   });
 
-  factory PokemonCharacteristicElement.fromJson(Map<String, dynamic> json) => PokemonCharacteristicElement(
+  factory PokemonCharacteristicElement.fromJson(Map<String, dynamic> json) =>
+      PokemonCharacteristicElement(
         baseStat: json["base_stat"],
         effort: json["effort"],
         stat: PokemonCharacteristic.fromJson(json["stat"]),

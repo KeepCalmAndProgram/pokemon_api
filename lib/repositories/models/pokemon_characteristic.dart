@@ -7,7 +7,8 @@ class PokemonCharacteristic {
     required this.url,
   });
 
-  factory PokemonCharacteristic.fromJson(Map<String, dynamic> json) => PokemonCharacteristic(
+  factory PokemonCharacteristic.fromJson(Map<String, dynamic> json) =>
+      PokemonCharacteristic(
         name: json["name"],
         url: json["url"],
       );

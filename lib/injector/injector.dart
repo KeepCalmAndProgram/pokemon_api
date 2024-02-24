@@ -7,6 +7,6 @@ import 'package:pokemon_api/repositories/pokemonApi/pockemon_api_repository.dart
 final getIt = GetIt.instance;
 
 void injector() {
-  getIt.registerLazySingleton<PokemonRepository>( () => PokemonApiRepository(dio: Dio()));
+  getIt.registerLazySingleton<PokemonRepository>(
+      () => PokemonApiRepository(dio: Dio()));
 }
-

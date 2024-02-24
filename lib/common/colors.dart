@@ -6,8 +6,8 @@ abstract class PokemonColor {
   static const background = Color(0xFF696376);
   static const onPrimary = Colors.white;
   static const onSecondary = Color(0xFFCAC6DC);
-  static const error = Color(0xC5EA101A);
-  static const secondary = Colors.white;
+  static const secondary = Colors.amber;
+  static const error = Colors.white;
   static const onSurface = Colors.white;
   static const onBackground = Colors.white;
   static const outline = Colors.white;

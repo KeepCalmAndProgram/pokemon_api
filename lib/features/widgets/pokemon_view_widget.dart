@@ -26,7 +26,7 @@ class PokemonView extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25.0),
-          color: Colors.amber,
+          color: Theme.of(context).colorScheme.secondary,
         ),
         child: Stack(
           alignment: Alignment.bottomCenter,
@@ -42,7 +42,10 @@ class PokemonView extends StatelessWidget {
             ),
             Positioned(
               bottom: 10,
-              child: Text(pokemon.name),
+              child: Text(
+                pokemon.name,
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
             ),
           ],
         ),
